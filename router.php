@@ -26,6 +26,6 @@ switch ($params[0]) {
         finishTask($params[1]);
         break; 
     default: 
-        echo "404 Page Not Found";
+        echo "Error 404 pagina no encontrada";
         break;
 }
