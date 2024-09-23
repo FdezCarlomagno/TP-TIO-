@@ -1,25 +1,31 @@
-<?php 
+<?php
+require_once './app/task.php';
 
-
+// base_url para redirecciones y base tag
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-require_once "./app/tasks.php";
-
-if(!empty($_GET['action'])){
+$action = 'listar'; // accion por defecto si no se envia ninguna
+if (!empty( $_GET['action'])) {
     $action = $_GET['action'];
-} else {
-    $action = "home";
 }
 
+// parsea la accion para separar accion real de parametros
 $params = explode('/', $action);
 
-
-switch($params[0]){
-    case "home":
+switch ($params[0]) {
+    case 'listar':
         showTasks();
         break;
-    default: 
+    case 'nueva':
+        addTask();
         break;
-    
+    case 'eliminar':
+        deleteTask($params[1]);
+        break;
+    case 'finalizar':
+        finishTask($params[1]);
+        break; 
+    default: 
+        echo "404 Page Not Found";
+        break;
 }
-
