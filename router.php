@@ -10,6 +10,7 @@ if (!empty( $_GET['action'])) {
 }
 
 // parsea la accion para separar accion real de parametros
+//comentario test
 $params = explode('/', $action);
 
 switch ($params[0]) {
